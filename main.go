@@ -7,6 +7,7 @@ import (
 	"os/exec"
 	"path/filepath"
 
+	"github.com/gookit/color"
 	"github.com/spf13/cobra"
 )
 
@@ -31,7 +32,7 @@ func main() {
 			globalPath := filepath.Join(projectPath, projectName)
 
 			if _, err := os.Stat(globalPath); err == nil {
-				fmt.Println("Project directory already exists.")
+				color.Red.Println("Project directory already exists.")
 				return
 			}
 
@@ -85,6 +86,8 @@ func main() {
 			if err := WriteRoutesFile(routesFilePath); err != nil {
 				log.Fatal(err)
 			}
+
+			color.Green.Println("Project created successfully.")
 		},
 	}
 
