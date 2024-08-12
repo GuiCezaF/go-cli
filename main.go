@@ -40,7 +40,8 @@ func main() {
 				log.Fatal(err)
 			}
 
-			startGo := exec.Command("go", "mod", "init", projectName)
+			gitHubUser := "github.com/GuiCezaF/"
+			startGo := exec.Command("go", "mod", "init", gitHubUser+projectName)
 			startGo.Dir = globalPath
 			startGo.Stdout = os.Stdout
 			startGo.Stderr = os.Stderr
