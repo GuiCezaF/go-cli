@@ -39,11 +39,12 @@ var createCmd = &cobra.Command{
 			return
 		}
 
-		if err := os.MkdirAll(globalPath, os.ModePerm); err != nil { // Usando MkdirAll para criar diretórios recursivamente
+		if err := os.MkdirAll(globalPath, os.ModePerm); err != nil {
 			log.Fatal(err)
 		}
 
-		gitHubUser := "github.com/GuiCezaF/"
+		// TODO: quando possuir mais tecnologias verificar se for go e colocar o user do github automaticamente
+		gitHubUser := "" // aqui você pode colocar seu usuario do github para criar com o padrão do GO
 		startGo := exec.Command("go", "mod", "init", gitHubUser+projectName)
 		startGo.Dir = globalPath
 		startGo.Stdout = os.Stdout
@@ -54,7 +55,7 @@ var createCmd = &cobra.Command{
 		}
 
 		cmdPath := filepath.Join(globalPath, "cmd")
-		if err := os.MkdirAll(cmdPath, os.ModePerm); err != nil { // Usando MkdirAll para garantir que todos os diretórios sejam criados
+		if err := os.MkdirAll(cmdPath, os.ModePerm); err != nil {
 			log.Fatal(err)
 		}
 
